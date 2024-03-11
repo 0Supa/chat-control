@@ -27,9 +27,9 @@ func updateKeyState(kb keybd_event.KeyBonding) {
 			kb.AddKey(key)
 		}
 	}
-	kb.Release()
+	// kb.Release()
 	kb.Press()
-	time.Sleep(2 * time.Second)
+	// time.Sleep(2 * time.Second)
 	kb.Release()
 }
 
