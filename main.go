@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"regexp"
 	"runtime"
@@ -32,8 +33,12 @@ func updateKeyState(kb keybd_event.KeyBonding) {
 	kb.Release()
 }
 
+var channelFlag = flag.String("channel", "daedulas_", "Twitch channel name")
+
 func main() {
 	fmt.Println("Initializing...")
+
+	flag.Parse()
 
 	kb, err := keybd_event.NewKeyBonding()
 	if err != nil {
@@ -64,7 +69,7 @@ func main() {
 		fmt.Println("Joined #" + message.Channel)
 	})
 
-	client.Join("daedulas_")
+	client.Join(*channelFlag)
 
 	err = client.Connect()
 	if err != nil {
